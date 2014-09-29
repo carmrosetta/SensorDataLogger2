@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sensor Data Logger</string>
+    <string name="app_title">Sensor Data Logger</string>
+    <string name="user">User:</string>
+    <string name="sex">Sex: </string>
+    <string name="female">F</string>
+    <string name="male">M</string>
+    <string name="age">Age: </string>
+    <string name="height">Height [cm]: </string>
+    <string name="weight">Weight [kg]: </string>
+    <string name="smart_phone_position">SmartPhone Position: </string>
+
+    <string-array name="smart_phone_position_array">
+        <item>Left front trouser pocket</item>
+        <item>Right front trouser pocket</item>
+        <item>Left back trouser pocket</item>
+        <item>Left back trouser pocket</item>
+        <item>Handbag</item>
+        <item>Waist (front)</item>
+        <item>Waist (back)</item>
+        <item>Chest (jacket pocket)</item>
+    </string-array>
+
+    <string-array name="delay_rates_array">
+        <item>SENSOR_DELAY_NORMAL</item>
+        <item>SENSOR_DELAY_UI</item>
+        <item>SENSOR_DELAY_GAME</item>
+        <item>SENSOR_DELAY_FASTEST</item>
+    </string-array>
+
+    <string name="title_activity_sampling">SamplingActivity</string>
+    <string name="title_activity_stop_sampling">StopSamplingActivity</string>
+    <string name="title_activity_list_files">ListFilesActivity</string>
+    <string name="title_activity_list_file">ListFileActivity</string>
+    <string name="service_started">Continuous sensors sampling service started</string>
+    <string name="title_activity_stop">StopActivity</string>
+    <string name="title_activity_start_sampling">StartSamplingActivity</string>
+    <string name="sensor_delay">Sensor delay: </string>
+    <string name="send_data">Send Data</string>
+    <string name="sensor_list">Sensor list: </string>
+
+</resources>
