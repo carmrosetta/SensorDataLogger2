@@ -21,7 +21,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.LinkedList;
 import java.util.List;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -57,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
     ArrayAdapter<CharSequence> [] samplingSpeedArrayAdapter;
     int[] sensorDelays;
     int selectedSensors = 0;
+    List<SensorInfo> sensorInfo;
 
 
 
@@ -132,12 +134,8 @@ public class MainActivity extends ActionBarActivity {
                             break;
                         case 3:
                             sensorDelays[j] = SensorManager.SENSOR_DELAY_FASTEST;
-                        default:
-                            sensorDelays[j] = SensorManager.SENSOR_DELAY_NORMAL;
-                            break;
-                    }
 
-                   // Toast.makeText(getApplicationContext(), "Sensor "+j+" speed = "+sensorDelays[j], Toast.LENGTH_LONG).show();
+                    }
 
                 }
 
@@ -201,22 +199,39 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-//        if ((sex.equals("")) || (age.equals("")) || (height.equals("")) || (weight.equals("")) || (sensorPosition.equals("")) ) {
-//
-//            tvErrors.setText("All fields are required!");
-//            tvErrors.setTextColor(Color.RED);
-//
-//        } else {
-//            Intent intent = new Intent(this.getApplicationContext(), SensorsSamplingService.class);
-//            User user = new User(sex, age, height, weight);
-//            intent.putExtra("User data", user);
-//            intent.putExtra("Sensor sampling rate", String.valueOf(sensorDelay));
-//            intent.putExtra("Sensor position", sensorPosition);
-//
-//            Log.d("Data sent to service", "From main activity to service");
-//            startService(intent);
-//            finish();
-//        }
+        if ((sex.equals("")) || (age.equals("")) || (height.equals("")) || (weight.equals("")) || (smartPhonePosition.equals("")) || (selectedSensors == 0) ) {
+
+            tvErrors.setText("All fields are required and you must select at least a sensor!");
+            tvErrors.setTextColor(Color.RED);
+
+        } else {
+            sensorInfo = new LinkedList<SensorInfo>();
+            for(int i = 0; i < sensorList.size(); i++) {
+                if(sensors[i].isChecked()) {
+                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorDelays[i]);
+                    sensorInfo.add(si);
+
+                }
+            }
+            Intent intent = new Intent(this.getApplicationContext(), SensorsSamplingService.class);
+            User user = new User(sex, age, height, weight);
+            intent.putExtra("User data", user);
+            intent.putExtra("SmartPhone position", smartPhonePosition);
+            intent.putExtra("Selected sensors ", (java.io.Serializable) sensorInfo);
+
+            startService(intent);
+            finish();
+        }
+    }
+
+
+    public void stopSampling(View v) {
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+        SensorsSamplingService.serviceRunning = false;
+        stopService(new Intent(getApplicationContext(), SensorsSamplingService.class));
+
+        finish();
     }
 
     @Override
