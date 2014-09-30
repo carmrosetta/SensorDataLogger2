@@ -217,7 +217,7 @@ public class MainActivity extends ActionBarActivity {
             User user = new User(sex, age, height, weight);
             intent.putExtra("User data", user);
             intent.putExtra("SmartPhone position", smartPhonePosition);
-            intent.putExtra("Selected sensors ", (java.io.Serializable) sensorInfo);
+            intent.putExtra("Selected sensors", (java.io.Serializable) sensorInfo);
 
             startService(intent);
             finish();
