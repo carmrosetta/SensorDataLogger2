@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -43,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
     String height = null;
     String weight = null;
     String smartPhonePosition = null;
-    String arraySmartPhonePos[];
+    String[] arraySmartPhonePos;
 
     LinearLayout sensorActivationList;
 
@@ -52,9 +53,10 @@ public class MainActivity extends ActionBarActivity {
     CheckBox[] sensors;
     Spinner[] sensorSamplingSpeeds;
     LinearLayout[] sensorChoices;
-    int sensorTypes[];
+    int[] sensorTypes;
     ArrayAdapter<CharSequence> [] samplingSpeedArrayAdapter;
-    int sensorDelays[];
+    int[] sensorDelays;
+    int selectedSensors = 0;
 
 
 
@@ -101,6 +103,17 @@ public class MainActivity extends ActionBarActivity {
             sensors[i].setText(sensorList.get(i).getName());
             sensorTypes[i] = sensorList.get(i).getType();
             sensors[i].setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+            sensors[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked) {
+                        selectedSensors += 1;
+                    }
+                    else {
+                        selectedSensors -= 1;
+                    }
+                }
+            });
             sensorChoices[i].addView(sensorSamplingSpeeds[i]);
             sensorSamplingSpeeds[i].setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
             sensorSamplingSpeeds[i].setAdapter(samplingSpeedArrayAdapter[i]);
@@ -124,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
                             break;
                     }
 
-                    Toast.makeText(getApplicationContext(), "Sensor "+j+" speed = "+sensorDelays[j], Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getApplicationContext(), "Sensor "+j+" speed = "+sensorDelays[j], Toast.LENGTH_LONG).show();
 
                 }
 
@@ -187,7 +200,7 @@ public class MainActivity extends ActionBarActivity {
         weight = weightEdit.getText().toString();
 
 
-        //TODO controlli sull'obbligatorietà dei campi
+
 //        if ((sex.equals("")) || (age.equals("")) || (height.equals("")) || (weight.equals("")) || (sensorPosition.equals("")) ) {
 //
 //            tvErrors.setText("All fields are required!");
