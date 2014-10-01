@@ -7,10 +7,17 @@ import java.io.Serializable;
  */
 public class SensorInfo implements Serializable {
     private int sensorType;
+    String sensorName;
     private int sensorSpeed;
 
-    public SensorInfo(int sensorType, int sensorSpeed) {
+    public String getSensorName() {
+        return sensorName;
+    }
+
+    public SensorInfo(int sensorType, String sensorName, int sensorSpeed) {
         this.sensorType = sensorType;
+        this.sensorName = sensorName;
+
         this.sensorSpeed = sensorSpeed;
     }
 

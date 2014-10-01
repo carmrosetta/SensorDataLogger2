@@ -102,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
             sensorSamplingSpeeds[i] = new Spinner(this);
 
             sensorChoices[i].addView(sensors[i]);
-            sensors[i].setText(sensorList.get(i).getName());
+            sensors[i].setText(Utilities.getSensorNameById(sensorList.get(i).getType(), sensorList.get(i).getName()));
             sensorTypes[i] = sensorList.get(i).getType();
             sensors[i].setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
             sensors[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -208,7 +208,7 @@ public class MainActivity extends ActionBarActivity {
             sensorInfo = new LinkedList<SensorInfo>();
             for(int i = 0; i < sensorList.size(); i++) {
                 if(sensors[i].isChecked()) {
-                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorDelays[i]);
+                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorList.get(i).getName(), sensorDelays[i]);
                     sensorInfo.add(si);
 
                 }
