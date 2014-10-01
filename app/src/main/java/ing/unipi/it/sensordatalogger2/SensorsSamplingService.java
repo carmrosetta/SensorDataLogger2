@@ -26,6 +26,8 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
     private PowerManager.WakeLock mWakeLock = null;
 
+    long[] lastUpdate;
+    long[] count;
 
     int activeSensors = 0;
 
@@ -60,17 +62,14 @@ public class SensorsSamplingService extends Service implements SensorEventListen
         samplesDirectories = new File[activeSensors];
         samplesFiles = new File[activeSensors];
 
+        lastUpdate = new long[activeSensors];
+        count = new long[activeSensors];
 
         long todayDate = System.currentTimeMillis();
         String startDate = Utilities.getDateTimeFromMillis(todayDate, "yy-MM-dd");
         String startTime = Utilities.getDateTimeFromMillis(todayDate, "kk-mm-ss");
         String device = Utilities.getDeviceName();
         String androidVersion = Utilities.getAndroidVersion();
-
-        /*
-        * per ogni sensore attivato creare una directory e un file in cui scrivere i dati
-        * */
-
 
 
         for(int i = 0; i < activeSensors; i++) {
@@ -82,7 +81,6 @@ public class SensorsSamplingService extends Service implements SensorEventListen
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
                 Log.e("ci scrivo qualcosa", "ci scrivo qualcosa");
             }
-
 
        }
 
@@ -145,6 +143,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+
 
     }
 
