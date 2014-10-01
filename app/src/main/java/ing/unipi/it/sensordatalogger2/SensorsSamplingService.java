@@ -15,6 +15,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.io.File;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
     long[] lastUpdate;
     long[] count;
+    long[] varTime;
 
     int activeSensors = 0;
 
@@ -64,6 +67,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
         lastUpdate = new long[activeSensors];
         count = new long[activeSensors];
+        varTime = new long[activeSensors];
 
         long todayDate = System.currentTimeMillis();
         String startDate = Utilities.getDateTimeFromMillis(todayDate, "yy-MM-dd");
@@ -143,6 +147,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+       // Toast.makeText(getApplicationContext(), ""+event.values[0], Toast.LENGTH_LONG).show();
 
 
     }
