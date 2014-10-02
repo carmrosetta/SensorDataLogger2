@@ -86,6 +86,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
             samplesFiles[i] = Utilities.createFile(samplesDirectories[i],Utilities.getDateTimeFromMillis(todayDate, "kk-mm")+".arff");
 
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
+
                 //meta-data
                 Utilities.writeData(samplesFiles[i], "% "+sensorName+" Track\n%\n");
                 Utilities.writeData(samplesFiles[i], "% Start Date [YY-MM-DD]: "+startDate+"\n");
@@ -159,7 +160,35 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-       // Toast.makeText(getApplicationContext(), ""+event.values[0], Toast.LENGTH_LONG).show();
+
+        for(int i = 0; i < activeSensors; i++) {
+            if( event.sensor.getType() == selectedSensorsData.get(i).getSensorType()) {
+                varTime[i] = System.currentTimeMillis();
+
+                float[] values = event.values;
+
+                if(lastUpdate[i] == 0) {
+                    lastUpdate[i] = varTime[i];
+                }
+
+                long diff = varTime[i] - lastUpdate[i];
+                count[i] += diff;
+
+                String timestamp = Utilities.getTimeInSeconds(count[i]);
+
+                String sensedValues = "";
+
+                for(int j = 0; j < values.length; j++) {
+                    sensedValues += ", "+values[j];
+                }
+
+                //sensedValues += "\n";
+
+                Utilities.writeData(samplesFiles[i],timestamp+sensedValues+"\n");
+
+            }
+        }
+
 
 
     }
@@ -168,6 +197,11 @@ public class SensorsSamplingService extends Service implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+
+//    public void getSensorData(SensorEvent event, long sampleTime, int i) {
+//
+//    }
 
     public BroadcastReceiver actionScreenOffReceiver = new BroadcastReceiver() {
         @Override
