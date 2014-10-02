@@ -123,58 +123,58 @@ public class Utilities {
                 unit = "[m/s^2]";
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
-                unit = "Thermometer";
+                unit = "°C";
                 break;
             case Sensor.TYPE_GAME_ROTATION_VECTOR:
-                unit = "Game Rotation Sensor";
+                unit = "";
                 break;
             case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
-                unit = "Geomagnetic Rotation Vector Sensor";
+                unit = "";
                 break;
             case Sensor.TYPE_GRAVITY:
                 unit = "[m/s^2]";
                 break;
             case Sensor.TYPE_GYROSCOPE:
-                unit = "Gyroscope";
+                unit = "[rad/sec]";
                 break;
             case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
-                unit = "Uncalibrated Gyroscope";
+                unit = "[rad/sec]";
                 break;
             case Sensor.TYPE_HEART_RATE:
-                unit = "Heart Rate Sensor";
+                unit = "[bpm]";
                 break;
             case Sensor.TYPE_LIGHT:
-                unit = "Light Sensor";
+                unit = "[lux]";
                 break;
             case Sensor.TYPE_LINEAR_ACCELERATION:
                 unit = "[m/s^2]";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                unit = "Magnetic Field Sensor";
+                unit = "[uT]";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
-                unit = "Uncalibrated Magnetic Field Sensor";
+                unit = "[uT]";
                 break;
             case Sensor.TYPE_PRESSURE:
-                unit = "Barometer";
+                unit = "[hPa]";
                 break;
             case Sensor.TYPE_PROXIMITY:
-                unit = "Proximity Sensor";
+                unit = "[cm]";
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
-                unit = "Relative Humidity Sensor";
+                unit = "[%]";
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
-                unit = "Rotation Vector Sensor";
+                unit = "";
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
-                unit = "Significant Motion Sensor";
+                unit = "";
                 break;
             case Sensor.TYPE_STEP_COUNTER:
-                unit = "Step Counter";
+                unit = "[number of steps]";
                 break;
             case Sensor.TYPE_STEP_DETECTOR:
-                unit = "Step Detector";
+                unit = "";
                 break;
             default:
                 unit = "";

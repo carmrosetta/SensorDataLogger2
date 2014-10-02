@@ -92,11 +92,10 @@ public class SensorsSamplingService extends Service implements SensorEventListen
                 Utilities.writeData(samplesFiles[i], "% Start Time [hh-mm-ss]: "+startTime+"\n%\n");
                 Utilities.writeData(samplesFiles[i], "% Device: "+device+"\n");
                 Utilities.writeData(samplesFiles[i], "% Android Version: "+androidVersion+"\n");
-                Utilities.writeData(samplesFiles[i], "% Range: "+selectedSensorsData.get(i).getMaxRange()+"\n");
+                Utilities.writeData(samplesFiles[i], "% Range "+Utilities.getSensorUnitById(selectedSensorsData.get(i).getSensorType())+": "+selectedSensorsData.get(i).getMaxRange()+"\n");
                 Utilities.writeData(samplesFiles[i], "% Android Sampling Rate: "+androidSamplingRate+"\n%\n");
                 Utilities.writeData(samplesFiles[i], user.toString()+"\n");
                 Utilities.writeData(samplesFiles[i], "% SmartPhone Position: "+smartPhonePosition+"\n% Notes:\n");
-
             }
 
        }
