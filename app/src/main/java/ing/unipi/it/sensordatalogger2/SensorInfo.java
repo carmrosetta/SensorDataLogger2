@@ -9,32 +9,16 @@ import java.io.Serializable;
  */
 public class SensorInfo implements Serializable {
     private int sensorType;
-    String sensorName;
+    private String sensorName;
     private int sensorSpeed;
-    Sensor sensor;
+    private float maxRange;
 
-    public String getSensorName() {
-        return sensorName;
-    }
 
-    public void setSensorName(String sensorName) {
-        this.sensorName = sensorName;
-    }
-
-    public Sensor getSensor() {
-        return sensor;
-    }
-
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
-    }
-
-    public SensorInfo(int sensorType, String sensorName, int sensorSpeed, Sensor sensor) {
+    public SensorInfo(int sensorType, String sensorName, int sensorSpeed, float maxRange) {
         this.sensorType = sensorType;
         this.sensorName = sensorName;
         this.sensorSpeed = sensorSpeed;
-        this.sensor = sensor;
-
+        this.maxRange = maxRange;
     }
 
     public int getSensorType() {
@@ -45,11 +29,27 @@ public class SensorInfo implements Serializable {
         this.sensorType = sensorType;
     }
 
+    public String getSensorName() {
+        return sensorName;
+    }
+
+    public void setSensorName(String sensorName) {
+        this.sensorName = sensorName;
+    }
+
     public int getSensorSpeed() {
         return sensorSpeed;
     }
 
     public void setSensorSpeed(int sensorSpeed) {
         this.sensorSpeed = sensorSpeed;
+    }
+
+    public float getMaxRange() {
+        return maxRange;
+    }
+
+    public void setMaxRange(float maxRange) {
+        this.maxRange = maxRange;
     }
 }

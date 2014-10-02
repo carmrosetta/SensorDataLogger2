@@ -208,7 +208,7 @@ public class MainActivity extends ActionBarActivity {
             selectedSensorsList = new LinkedList<SensorInfo>();
             for(int i = 0; i < sensorList.size(); i++) {
                 if(sensors[i].isChecked()) {
-                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorList.get(i).getName(), sensorDelays[i], sensorList.get(i));
+                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorList.get(i).getName(), sensorDelays[i], sensorList.get(i).getMaximumRange());
                     selectedSensorsList.add(si);
 
                 }
