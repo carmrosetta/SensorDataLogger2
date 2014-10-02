@@ -144,7 +144,7 @@ public class Utilities {
                 unit = "[bpm]";
                 break;
             case Sensor.TYPE_LIGHT:
-                unit = "[lux]";
+                unit = "[lx]";
                 break;
             case Sensor.TYPE_LINEAR_ACCELERATION:
                 unit = "[m/s^2]";
@@ -184,6 +184,127 @@ public class Utilities {
         return unit;
     }
 
+    public static String createRelationHeader (int sensorId) {
+        String relationHeader = "";
+        switch(sensorId) {
+            case Sensor.TYPE_ACCELEROMETER:
+                relationHeader =    "@RELATION \tAcceleration\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tacceleration_x [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tacceleration_y [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tacceleration_z [m/s^2] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_AMBIENT_TEMPERATURE:
+                relationHeader =    "@RELATION \tAmbient temperature\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tambient_temperature [°C] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_GAME_ROTATION_VECTOR:
+                relationHeader = "";
+                break;
+            case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
+                relationHeader = "";
+                break;
+            case Sensor.TYPE_GRAVITY:
+                relationHeader =    "@RELATION \tGravity\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tgravity_x [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tgravity_y [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tgravity_z [m/s^2] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_GYROSCOPE:
+                relationHeader =    "@RELATION \tAngular_Speed\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tangular_speed_x [rad/s] numeric\n" +
+                                    "@ATTRIBUTE \tangular_speed_y [rad/s] numeric\n" +
+                                    "@ATTRIBUTE \tangular_speed_z [rad/s] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
+                relationHeader =    "@RELATION \tUncalibrated_Angular_Speed\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tangular_speed_x [rad/s] numeric\n" +
+                        "@ATTRIBUTE \tangular_speed_y [rad/s] numeric\n" +
+                        "@ATTRIBUTE \tangular_speed_z [rad/s] numeric\n" +
+                        "@ATTRIBUTE \testimated_drift_x [rad/s] numeric\n" +
+                        "@ATTRIBUTE \testimated_drift_y [rad/s] numeric\n" +
+                        "@ATTRIBUTE \testimated_drift_z [rad/s] numeric\n" +
+                        "@DATA \n";
+
+                break;
+            case Sensor.TYPE_HEART_RATE:
+                relationHeader =    "@Heart_Rate\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \theart_rate [bpm] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_LIGHT:
+                relationHeader =    "@RELATION \tLight\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tlight [lx] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_LINEAR_ACCELERATION:
+                relationHeader =    "@RELATION \tLinear_Acceleration\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tacceleration_x [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tacceleration_y [m/s^2] numeric\n" +
+                                    "@ATTRIBUTE \tacceleration_z [m/s^2] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD:
+                relationHeader =    "@RELATION \tMagnetic_Field\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \tmagnetic_field_x [uT] numeric\n" +
+                                    "@ATTRIBUTE \tmagnetic_field_y [uT] numeric\n" +
+                                    "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
+                relationHeader =    "@RELATION \tMagnetic_Field\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tmagnetic_field_x [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_y [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@DATA \n";
+                break;
+            case Sensor.TYPE_PRESSURE:
+                relationHeader = "[hPa]";
+                break;
+            case Sensor.TYPE_PROXIMITY:
+                relationHeader = "[cm]";
+                break;
+            case Sensor.TYPE_RELATIVE_HUMIDITY:
+                relationHeader =    "@RELATION \tRelative_Humidity\n" +
+                                    "@ATTRIBUTE \ttime [s] numeric\n"+
+                                    "@ATTRIBUTE \trelative_humidity [%] numeric\n" +
+                                    "@DATA \n";
+                break;
+            case Sensor.TYPE_ROTATION_VECTOR:
+                relationHeader = "";
+                break;
+            case Sensor.TYPE_SIGNIFICANT_MOTION:
+                relationHeader = "";
+                break;
+            case Sensor.TYPE_STEP_COUNTER:
+                relationHeader = "[number of steps]";
+                break;
+            case Sensor.TYPE_STEP_DETECTOR:
+                relationHeader = "";
+                break;
+            default:
+                relationHeader = "";
+                break;
+
+        }
+        return relationHeader;
+    }
 
     public static void writeData(File file, String data) {
 
