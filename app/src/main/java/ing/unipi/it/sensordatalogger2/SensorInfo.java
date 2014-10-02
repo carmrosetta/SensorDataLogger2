@@ -1,5 +1,7 @@
 package ing.unipi.it.sensordatalogger2;
 
+import android.hardware.Sensor;
+
 import java.io.Serializable;
 
 /**
@@ -9,16 +11,30 @@ public class SensorInfo implements Serializable {
     private int sensorType;
     String sensorName;
     private int sensorSpeed;
+    Sensor sensor;
 
     public String getSensorName() {
         return sensorName;
     }
 
-    public SensorInfo(int sensorType, String sensorName, int sensorSpeed) {
+    public void setSensorName(String sensorName) {
+        this.sensorName = sensorName;
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
+    }
+
+    public SensorInfo(int sensorType, String sensorName, int sensorSpeed, Sensor sensor) {
         this.sensorType = sensorType;
         this.sensorName = sensorName;
-
         this.sensorSpeed = sensorSpeed;
+        this.sensor = sensor;
+
     }
 
     public int getSensorType() {

@@ -83,7 +83,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
             samplesFiles[i] = Utilities.createFile(samplesDirectories[i],Utilities.getDateTimeFromMillis(todayDate, "kk-mm")+".arff");
 
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
-                Log.e("ci scrivo qualcosa", "ci scrivo qualcosa");
+                //todo scrivere nel file le intestazioni
             }
 
        }

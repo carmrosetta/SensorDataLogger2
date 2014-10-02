@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
     ArrayAdapter<CharSequence> [] samplingSpeedArrayAdapter;
     int[] sensorDelays;
     int selectedSensors = 0;
-    List<SensorInfo> sensorInfo;
+    List<SensorInfo> selectedSensorsList;
 
 
 
@@ -205,11 +205,11 @@ public class MainActivity extends ActionBarActivity {
             tvErrors.setTextColor(Color.RED);
 
         } else {
-            sensorInfo = new LinkedList<SensorInfo>();
+            selectedSensorsList = new LinkedList<SensorInfo>();
             for(int i = 0; i < sensorList.size(); i++) {
                 if(sensors[i].isChecked()) {
-                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorList.get(i).getName(), sensorDelays[i]);
-                    sensorInfo.add(si);
+                    SensorInfo si = new SensorInfo(sensorList.get(i).getType(), sensorList.get(i).getName(), sensorDelays[i], sensorList.get(i));
+                    selectedSensorsList.add(si);
 
                 }
             }
@@ -217,7 +217,7 @@ public class MainActivity extends ActionBarActivity {
             User user = new User(sex, age, height, weight);
             intent.putExtra("User data", user);
             intent.putExtra("SmartPhone position", smartPhonePosition);
-            intent.putExtra("Selected sensors", (java.io.Serializable) sensorInfo);
+            intent.putExtra("Selected sensors", (java.io.Serializable) selectedSensorsList);
 
             startService(intent);
             finish();
