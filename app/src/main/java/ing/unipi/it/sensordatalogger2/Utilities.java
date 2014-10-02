@@ -296,7 +296,10 @@ public class Utilities {
                 relationHeader = "";
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
-                relationHeader = "";
+                relationHeader =    "@RELATION \tSignificant_Motion\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tsignificant_motion numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_STEP_COUNTER:
                 relationHeader =    "@RELATION \tStep_Counter\n" +
