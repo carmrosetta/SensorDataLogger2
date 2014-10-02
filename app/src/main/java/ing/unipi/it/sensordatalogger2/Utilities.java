@@ -94,7 +94,7 @@ public class Utilities {
                 sensorName = "Proximity Sensor";
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
-                sensorName = "Relavire Humidity Sensor";
+                sensorName = "Relative Humidity Sensor";
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
                 sensorName = "Rotation Vector Sensor";
@@ -115,6 +115,75 @@ public class Utilities {
         }
         return sensorName;
     }
+
+    public static String getSensorUnitById(int sensorId) {
+        String unit = "";
+        switch(sensorId) {
+            case Sensor.TYPE_ACCELEROMETER:
+                unit = "[m/s^2]";
+                break;
+            case Sensor.TYPE_AMBIENT_TEMPERATURE:
+                unit = "Thermometer";
+                break;
+            case Sensor.TYPE_GAME_ROTATION_VECTOR:
+                unit = "Game Rotation Sensor";
+                break;
+            case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
+                unit = "Geomagnetic Rotation Vector Sensor";
+                break;
+            case Sensor.TYPE_GRAVITY:
+                unit = "[m/s^2]";
+                break;
+            case Sensor.TYPE_GYROSCOPE:
+                unit = "Gyroscope";
+                break;
+            case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
+                unit = "Uncalibrated Gyroscope";
+                break;
+            case Sensor.TYPE_HEART_RATE:
+                unit = "Heart Rate Sensor";
+                break;
+            case Sensor.TYPE_LIGHT:
+                unit = "Light Sensor";
+                break;
+            case Sensor.TYPE_LINEAR_ACCELERATION:
+                unit = "[m/s^2]";
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD:
+                unit = "Magnetic Field Sensor";
+                break;
+            case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
+                unit = "Uncalibrated Magnetic Field Sensor";
+                break;
+            case Sensor.TYPE_PRESSURE:
+                unit = "Barometer";
+                break;
+            case Sensor.TYPE_PROXIMITY:
+                unit = "Proximity Sensor";
+                break;
+            case Sensor.TYPE_RELATIVE_HUMIDITY:
+                unit = "Relative Humidity Sensor";
+                break;
+            case Sensor.TYPE_ROTATION_VECTOR:
+                unit = "Rotation Vector Sensor";
+                break;
+            case Sensor.TYPE_SIGNIFICANT_MOTION:
+                unit = "Significant Motion Sensor";
+                break;
+            case Sensor.TYPE_STEP_COUNTER:
+                unit = "Step Counter";
+                break;
+            case Sensor.TYPE_STEP_DETECTOR:
+                unit = "Step Detector";
+                break;
+            default:
+                unit = "";
+                break;
+
+        }
+        return unit;
+    }
+
 
     public static void writeData(File file, String data) {
 

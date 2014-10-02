@@ -37,7 +37,7 @@ public class User implements Serializable {
     }
 
     public String toString () {
-        return "\n% User  (sex, age, height[cm], weight[kg]): "+
+        return "% User  (sex, age, height[cm], weight[kg]): "+
                 sex +", "+ age +", " + height +", " + weight;
     }
 
