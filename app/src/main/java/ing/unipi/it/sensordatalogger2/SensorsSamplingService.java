@@ -161,37 +161,17 @@ public class SensorsSamplingService extends Service implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
 
+        long now = System.currentTimeMillis();
+
         for(int i = 0; i < activeSensors; i++) {
-            if( event.sensor.getType() == selectedSensorsData.get(i).getSensorType()) {
-                varTime[i] = System.currentTimeMillis();
-
-                float[] values = event.values;
-
-                if(lastUpdate[i] == 0) {
-                    lastUpdate[i] = varTime[i];
-                }
-
-                long diff = varTime[i] - lastUpdate[i];
-                count[i] += diff;
-
-                String timestamp = Utilities.getTimeInSeconds(count[i]);
-
-                String sensedValues = "";
-
-                for(int j = 0; j < values.length; j++) {
-                    sensedValues += ", "+values[j];
-                }
-
-                //sensedValues += "\n";
-
-                Utilities.writeData(samplesFiles[i],timestamp+sensedValues+"\n");
-
+            if (event.sensor.getType() == selectedSensorsData.get(i).getSensorType()) {
+                varTime[i] = now;
+                getSensorData(event, varTime[i], i);
             }
         }
 
-
-
     }
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -199,9 +179,31 @@ public class SensorsSamplingService extends Service implements SensorEventListen
     }
 
 
-//    public void getSensorData(SensorEvent event, long sampleTime, int i) {
-//
-//    }
+    public void getSensorData(SensorEvent event, long sampleTime, int i) {
+
+
+        float[] values = event.values;
+
+        if(lastUpdate[i] == 0) {
+            lastUpdate[i] = sampleTime;
+        }
+
+        long diff = sampleTime - lastUpdate[i];
+        count[i] += diff;
+        lastUpdate[i] = sampleTime;
+
+        String timestamp = Utilities.getTimeInSeconds(count[i]);
+
+        String sensedValues = "";
+
+        for(int j = 0; j < values.length; j++) {
+            sensedValues += ", "+values[j];
+        }
+        Utilities.writeData(samplesFiles[i],timestamp+sensedValues+"\n");
+
+
+
+    }
 
     public BroadcastReceiver actionScreenOffReceiver = new BroadcastReceiver() {
         @Override
