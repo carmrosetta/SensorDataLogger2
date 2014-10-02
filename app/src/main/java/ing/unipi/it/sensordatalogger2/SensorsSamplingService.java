@@ -78,12 +78,22 @@ public class SensorsSamplingService extends Service implements SensorEventListen
 
         for(int i = 0; i < activeSensors; i++) {
 
-            samplesDirectories[i] = Utilities.createDirectory("Samples/"+Utilities.getSensorNameById(selectedSensorsData.get(i).getSensorType(), selectedSensorsData.get(i).getSensorName())+
+            String sensorName = Utilities.getSensorNameById(selectedSensorsData.get(i).getSensorType(), selectedSensorsData.get(i).getSensorName());
+            String androidSamplingRate = Utilities.getAndroidSamplingRateById(selectedSensorsData.get(i).getSensorSpeed());
+
+            samplesDirectories[i] = Utilities.createDirectory("Samples/"+sensorName+
                     "/"+Utilities.getDateTimeFromMillis(todayDate, "yy-MM-dd"));
             samplesFiles[i] = Utilities.createFile(samplesDirectories[i],Utilities.getDateTimeFromMillis(todayDate, "kk-mm")+".arff");
 
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
                 //todo scrivere nel file le intestazioni
+                Utilities.writeData(samplesFiles[i], "% "+sensorName+" Track\n%\n");
+                Utilities.writeData(samplesFiles[i], "% Start date [YY-MM-DD]: "+startDate+"\n");
+                Utilities.writeData(samplesFiles[i], "% Start time [hh-mm-ss]: "+startTime+"\n%\n");
+                Utilities.writeData(samplesFiles[i], "% Device: "+device+"\n");
+                Utilities.writeData(samplesFiles[i], "% Android Version: "+androidVersion+"\n");
+                Utilities.writeData(samplesFiles[i], "% Range: "+selectedSensorsData.get(i).getMaxRange()+"\n");
+                Utilities.writeData(samplesFiles[i], "% Android Sampling Rate: "+androidSamplingRate+"\n");
             }
 
        }

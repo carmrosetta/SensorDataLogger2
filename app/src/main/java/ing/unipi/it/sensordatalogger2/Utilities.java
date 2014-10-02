@@ -58,55 +58,55 @@ public class Utilities {
                 sensorName = "Thermometer";
                 break;
             case Sensor.TYPE_GAME_ROTATION_VECTOR:
-                sensorName = "Game rotation sensor";
+                sensorName = "Game Rotation Sensor";
                 break;
             case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
-                sensorName = "Geomagnetic rotation vector sensor";
+                sensorName = "Geomagnetic Rotation Vector Sensor";
                 break;
             case Sensor.TYPE_GRAVITY:
-                sensorName = "Gravity sensor";
+                sensorName = "Gravity Sensor";
                 break;
             case Sensor.TYPE_GYROSCOPE:
                 sensorName = "Gyroscope";
                 break;
             case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
-                sensorName = "Uncalibrated gyroscope";
+                sensorName = "Uncalibrated Gyroscope";
                 break;
             case Sensor.TYPE_HEART_RATE:
-                sensorName = "Heart rate sensor";
+                sensorName = "Heart Rate Sensor";
                 break;
             case Sensor.TYPE_LIGHT:
-                sensorName = "Light sensor";
+                sensorName = "Light Sensor";
                 break;
             case Sensor.TYPE_LINEAR_ACCELERATION:
-                sensorName = "Linear acceleration sensor";
+                sensorName = "Linear Acceleration Sensor";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                sensorName = "Magnetic field sensor";
+                sensorName = "Magnetic Field Sensor";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
-                sensorName = "Uncalibrated magnetic field sensor";
+                sensorName = "Uncalibrated Magnetic Field Sensor";
                 break;
             case Sensor.TYPE_PRESSURE:
                 sensorName = "Barometer";
                 break;
             case Sensor.TYPE_PROXIMITY:
-                sensorName = "Proximity sensor";
+                sensorName = "Proximity Sensor";
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
-                sensorName = "Relavire humidity sensor";
+                sensorName = "Relavire Humidity Sensor";
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
-                sensorName = "Rotation vector sensor";
+                sensorName = "Rotation Vector Sensor";
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
-                sensorName = "Significant motion sensor";
+                sensorName = "Significant Motion Sensor";
                 break;
             case Sensor.TYPE_STEP_COUNTER:
-                sensorName = "Step counter";
+                sensorName = "Step Counter";
                 break;
             case Sensor.TYPE_STEP_DETECTOR:
-                sensorName = "Step detector";
+                sensorName = "Step Detector";
                 break;
             default:
                 sensorName = name;
@@ -115,9 +115,6 @@ public class Utilities {
         }
         return sensorName;
     }
-
-
-
 
     public static void writeData(File file, String data) {
 
@@ -162,7 +159,6 @@ public class Utilities {
         return file;
     }
 
-
     public static String getTimeInSeconds(long timeInMillis) {
 
         int seconds = (int) (timeInMillis / 1000);
@@ -172,7 +168,6 @@ public class Utilities {
         String timeInSeconds = "" + String.format(seconds + "." + String.format("%03d", milliseconds));
         return timeInSeconds;
     }
-
 
     public static String capitalize(String s) {
         if (s == null || s.length() == 0) {
@@ -197,6 +192,7 @@ public class Utilities {
 
         return deviceName;
     }
+
     public static String getAndroidVersion() {
         StringBuilder builder = new StringBuilder();
         builder.append("Android ").append(Build.VERSION.RELEASE);
@@ -240,6 +236,26 @@ public class Utilities {
         return file.length()/1024;
     }
 
+    public static String getAndroidSamplingRateById (int sensorSamplingRate) {
+        String androidSamplingRate = "";
+
+        switch (sensorSamplingRate) {
+            case SensorManager.SENSOR_DELAY_NORMAL:
+                androidSamplingRate = "SensorManager.SENSOR_DELAY_NORMAL";
+                break;
+            case SensorManager.SENSOR_DELAY_UI:
+                androidSamplingRate = "SensorManager.SENSOR_DELAY_NORMAL";
+                break;
+            case SensorManager.SENSOR_DELAY_GAME:
+                androidSamplingRate = "SensorManager.SENSOR_DELAY_GAME";
+                break;
+            case SensorManager.SENSOR_DELAY_FASTEST:
+                androidSamplingRate = "SensorManager.SENSOR_DELAY_FASTEST";
+                break;
+        }
+
+        return androidSamplingRate;
+    }
 
 
 }
