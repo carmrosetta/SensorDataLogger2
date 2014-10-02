@@ -86,14 +86,17 @@ public class SensorsSamplingService extends Service implements SensorEventListen
             samplesFiles[i] = Utilities.createFile(samplesDirectories[i],Utilities.getDateTimeFromMillis(todayDate, "kk-mm")+".arff");
 
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
-                //todo scrivere nel file le intestazioni
+                //meta-data
                 Utilities.writeData(samplesFiles[i], "% "+sensorName+" Track\n%\n");
-                Utilities.writeData(samplesFiles[i], "% Start date [YY-MM-DD]: "+startDate+"\n");
-                Utilities.writeData(samplesFiles[i], "% Start time [hh-mm-ss]: "+startTime+"\n%\n");
+                Utilities.writeData(samplesFiles[i], "% Start Date [YY-MM-DD]: "+startDate+"\n");
+                Utilities.writeData(samplesFiles[i], "% Start Time [hh-mm-ss]: "+startTime+"\n%\n");
                 Utilities.writeData(samplesFiles[i], "% Device: "+device+"\n");
                 Utilities.writeData(samplesFiles[i], "% Android Version: "+androidVersion+"\n");
                 Utilities.writeData(samplesFiles[i], "% Range: "+selectedSensorsData.get(i).getMaxRange()+"\n");
-                Utilities.writeData(samplesFiles[i], "% Android Sampling Rate: "+androidSamplingRate+"\n");
+                Utilities.writeData(samplesFiles[i], "% Android Sampling Rate: "+androidSamplingRate+"\n%\n");
+                Utilities.writeData(samplesFiles[i], "% User  (sex, age, height[cm], weight[kg]): "+user.toString()+"\n");
+                Utilities.writeData(samplesFiles[i], "% SmartPhone Position: "+smartPhonePosition+"\n% Notes:\n");
+
             }
 
        }
