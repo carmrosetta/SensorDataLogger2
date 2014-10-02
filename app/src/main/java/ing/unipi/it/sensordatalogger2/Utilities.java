@@ -264,21 +264,27 @@ public class Utilities {
                                     "@DATA \n";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
-                relationHeader =    "@RELATION \tMagnetic_Field\n" +
+                relationHeader =    "@RELATION \tUncalibrated_Magnetic_Field\n" +
                         "@ATTRIBUTE \ttime [s] numeric\n"+
-                        "@ATTRIBUTE \tmagnetic_field_x [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_y [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_x [uT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_y [uT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tbias_x [uT] numeric\n" +
+                        "@ATTRIBUTE \tbias_y [uT] numeric\n" +
+                        "@ATTRIBUTE \tbias_z [uT] numeric\n" +
                         "@DATA \n";
                 break;
             case Sensor.TYPE_PRESSURE:
-                relationHeader = "[hPa]";
+                relationHeader =    "@RELATION \tPressure\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tpressure [hPa] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_PROXIMITY:
-                relationHeader = "[cm]";
+                relationHeader =    "@RELATION \tDistance\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tdistance [cm] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
                 relationHeader =    "@RELATION \tRelative_Humidity\n" +
@@ -293,10 +299,16 @@ public class Utilities {
                 relationHeader = "";
                 break;
             case Sensor.TYPE_STEP_COUNTER:
-                relationHeader = "[number of steps]";
+                relationHeader =    "@RELATION \tStep_Counter\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tsteps [number_of_steps] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_STEP_DETECTOR:
-                relationHeader = "";
+                relationHeader =    "@RELATION \tStep_Detector\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n"+
+                        "@ATTRIBUTE \tstep_detected numeric\n" +
+                        "@DATA \n";
                 break;
             default:
                 relationHeader = "";
