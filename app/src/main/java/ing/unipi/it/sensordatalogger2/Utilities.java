@@ -40,7 +40,7 @@ public class Utilities {
         builder.setAutoCancel(false);
 
         builder.setContentTitle(message);
-        //TODO pending intent
+
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, cls), PendingIntent.FLAG_UPDATE_CURRENT);//studiare i flag
         builder.setContentIntent(contentIntent);
         notificationManager.notify(0, builder.build());
