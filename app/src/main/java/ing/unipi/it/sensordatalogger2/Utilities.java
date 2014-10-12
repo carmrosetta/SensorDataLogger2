@@ -125,10 +125,10 @@ public class Utilities {
                 unit = "°C";
                 break;
             case Sensor.TYPE_GAME_ROTATION_VECTOR:
-                unit = "";
+                unit = "°";
                 break;
             case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
-                unit = "";
+                unit = "°";
                 break;
             case Sensor.TYPE_GRAVITY:
                 unit = "[m/s^2]";
@@ -149,13 +149,13 @@ public class Utilities {
                 unit = "[m/s^2]";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                unit = "[uT]";
+                unit = "[μT]";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
-                unit = "[uT]";
+                unit = "[μT]";
                 break;
             case Sensor.TYPE_PRESSURE:
-                unit = "[hPa]";
+                unit = "[mbars]";
                 break;
             case Sensor.TYPE_PROXIMITY:
                 unit = "[cm]";
@@ -164,7 +164,7 @@ public class Utilities {
                 unit = "[%]";
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
-                unit = "";
+                unit = "°";
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
                 unit = "";
@@ -195,16 +195,28 @@ public class Utilities {
                         "@DATA \n";
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
-                relationHeader = "@RELATION \tAmbient temperature\n" +
+                relationHeader = "@RELATION \tAmbient_Temperature\n" +
                         "@ATTRIBUTE \ttime [s] numeric\n" +
                         "@ATTRIBUTE \tambient_temperature [°C] numeric\n" +
                         "@DATA \n";
                 break;
             case Sensor.TYPE_GAME_ROTATION_VECTOR:
-                relationHeader = "";
+                relationHeader = "@RELATION \tRotation_Vector\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n" +
+                        "@ATTRIBUTE \tx*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \ty*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tz*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tcos(Ѳ/2) [°] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
-                relationHeader = "";
+                relationHeader = "@RELATION \tGeomagnetic_Rotation_Vector\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n" +
+                        "@ATTRIBUTE \tx*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \ty*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tz*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tcos(Ѳ/2) [°] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_GRAVITY:
                 relationHeader = "@RELATION \tGravity\n" +
@@ -257,26 +269,26 @@ public class Utilities {
             case Sensor.TYPE_MAGNETIC_FIELD:
                 relationHeader = "@RELATION \tMagnetic_Field\n" +
                         "@ATTRIBUTE \ttime [s] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_x [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_y [uT] numeric\n" +
-                        "@ATTRIBUTE \tmagnetic_field_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_x [μT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_y [μT] numeric\n" +
+                        "@ATTRIBUTE \tmagnetic_field_z [μT] numeric\n" +
                         "@DATA \n";
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
                 relationHeader = "@RELATION \tUncalibrated_Magnetic_Field\n" +
                         "@ATTRIBUTE \ttime [s] numeric\n" +
-                        "@ATTRIBUTE \tuncalibrated_magnetic_field_x [uT] numeric\n" +
-                        "@ATTRIBUTE \tuncalibrated_magnetic_field_y [uT] numeric\n" +
-                        "@ATTRIBUTE \tuncalibrated_magnetic_field_z [uT] numeric\n" +
-                        "@ATTRIBUTE \tbias_x [uT] numeric\n" +
-                        "@ATTRIBUTE \tbias_y [uT] numeric\n" +
-                        "@ATTRIBUTE \tbias_z [uT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_x [μT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_y [μT] numeric\n" +
+                        "@ATTRIBUTE \tuncalibrated_magnetic_field_z [μT] numeric\n" +
+                        "@ATTRIBUTE \tbias_x [μT] numeric\n" +
+                        "@ATTRIBUTE \tbias_y [μT] numeric\n" +
+                        "@ATTRIBUTE \tbias_z [μT] numeric\n" +
                         "@DATA \n";
                 break;
             case Sensor.TYPE_PRESSURE:
                 relationHeader = "@RELATION \tPressure\n" +
                         "@ATTRIBUTE \ttime [s] numeric\n" +
-                        "@ATTRIBUTE \tpressure [hPa] numeric\n" +
+                        "@ATTRIBUTE \tpressure [mbars] numeric\n" +
                         "@DATA \n";
                 break;
             case Sensor.TYPE_PROXIMITY:
@@ -292,7 +304,13 @@ public class Utilities {
                         "@DATA \n";
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
-                relationHeader = "";
+                relationHeader = "@RELATION \tGeomagnetic_Rotation_Vector\n" +
+                        "@ATTRIBUTE \ttime [s] numeric\n" +
+                        "@ATTRIBUTE \tx*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \ty*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tz*sin(Ѳ/2) [°] numeric\n" +
+                        "@ATTRIBUTE \tcos(Ѳ/2) [°] numeric\n" +
+                        "@DATA \n";
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
                 relationHeader = "@RELATION \tSignificant_Motion\n" +
