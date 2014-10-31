@@ -465,7 +465,7 @@ public class Utilities {
                 androidSamplingRate = "SensorManager.SENSOR_DELAY_NORMAL";
                 break;
             case SensorManager.SENSOR_DELAY_UI:
-                androidSamplingRate = "SensorManager.SENSOR_DELAY_NORMAL";
+                androidSamplingRate = "SensorManager.SENSOR_DELAY_UI";
                 break;
             case SensorManager.SENSOR_DELAY_GAME:
                 androidSamplingRate = "SensorManager.SENSOR_DELAY_GAME";

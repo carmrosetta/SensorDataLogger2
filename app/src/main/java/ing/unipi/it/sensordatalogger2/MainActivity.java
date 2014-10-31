@@ -8,7 +8,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;

@@ -15,8 +15,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
-import android.widget.Toast;
-
 import java.io.File;
 import java.util.List;
 
@@ -88,6 +86,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
             if(Utilities.getFileSize(samplesFiles[i]) == 0){
 
                 //meta-data
+                //todo function to write meta-data
                 Utilities.writeData(samplesFiles[i], "% "+sensorName+" Track\n%\n");
                 Utilities.writeData(samplesFiles[i], "% Start Date [YY-MM-DD]: "+startDate+"\n");
                 Utilities.writeData(samplesFiles[i], "% Start Time [hh-mm-ss]: "+startTime+"\n%\n");
@@ -132,7 +131,7 @@ public class SensorsSamplingService extends Service implements SensorEventListen
                 (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = manager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
-//todo fare il broadcast receiver
+
         registerReceiver(actionScreenOffReceiver, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 
 
